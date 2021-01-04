@@ -10,6 +10,7 @@ import CoreML
 import Vision
 import Alamofire
 import SwiftyJSON
+import SDWebImage
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavigationControllerDelegate {
 
@@ -24,7 +25,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
     override func viewDidLoad() {
         super.viewDidLoad()
         imagePicker.delegate = self
-        imagePicker.sourceType = .photoLibrary
         imagePicker.allowsEditing = true
     }
     
@@ -33,7 +33,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
             guard let ciImage = CIImage(image: pickedImage) else {
                 fatalError("Couldn't convert to CIImage")
             }
-            imageView.image = pickedImage
+           
             detect(flowerImage: ciImage)
         }
         
@@ -41,8 +41,15 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
     }
 
     @IBAction func cameraTapped(_ sender: UIBarButtonItem) {
+        imagePicker.sourceType = .camera
         present(imagePicker, animated: true, completion: nil)
     }
+    
+    @IBAction func plusTapped(_ sender: UIBarButtonItem) {
+        imagePicker.sourceType = .photoLibrary
+        present(imagePicker, animated: true, completion: nil)
+    }
+    
     
     func detect(flowerImage: CIImage) {
         guard let model = try? VNCoreMLModel(for: FlowerClassifier().model) else { fatalError("Loading FlowerClassifier model failed") }
@@ -64,25 +71,24 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
         let requiredParameters: [String: String] = [
             "format" : "json",
             "action" : "query",
-            "prop" : "extracts",
+            "prop" : "extracts|pageimages",
             "exintro" : "",
             "explaintext" : "",
             "titles" : flowerName,
             "indexpageids" : "",
             "redirects" : "1",
-            
+            "pithumbsize" : "500"
         ]
             
         Alamofire.request(baseURL, method: .get, parameters: requiredParameters).responseJSON { (response) in
             if response.result.isSuccess {
+                //print(response.result.value)
                 let flowerJSON: JSON = JSON(response.result.value!)
                 let pageId = flowerJSON["query"]["pageids"][0].stringValue
                 let flowerDescription = flowerJSON["query"]["pages"][pageId]["extract"].stringValue
+                let flowerImageURL = flowerJSON["query"]["pages"][pageId]["thumbnail"]["source"].string
+                self.imageView.sd_setImage(with: URL(string: flowerImageURL ?? ""))
                 self.textLabelfromWiki.text = flowerDescription
-//                if self.textLabelfromWiki.text?.count != 0 {
-//                    let range = NSMakeRange(self.textLabelfromWiki.text!.count - 1, 0)
-//                    self.textLabelfromWiki.scrollRangeToVisible(range)
-//                }
             }
         }
     }
