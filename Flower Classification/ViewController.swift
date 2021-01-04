@@ -39,16 +39,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
     }
     
     func detect(flowerImage: CIImage) {
-        guard let model = try? VNCoreMLModel(for: FlowerClassifier().model) else { fatalError("Loading CoreML model failed") }
+        guard let model = try? VNCoreMLModel(for: FlowerClassifier().model) else { fatalError("Loading FlowerClassifier model failed") }
         let request = VNCoreMLRequest(model: model) { (request, error) in
-            guard let results = request.results as? [VNClassificationObservation] else { fatalError("Could not convert results") }
-            if let firstResult = results.first {
-                if let name = firstResult.identifier.contains(FlowerClassifier().model.description) {
-                    self.navigationItem.title = name
-                } else {
-                    self.navigationItem.title = "Couldn't find the flower type for this picture"
-                }
-            }
+            guard let results = request.results?.first as? VNClassificationObservation else { fatalError("Could not convert results") }
+            self.navigationItem.title = results.identifier.capitalized
         }
         let handler = VNImageRequestHandler(ciImage: flowerImage)
         do {
