@@ -9,5 +9,6 @@ target 'Flower Classification' do
 
 pod 'Alamofire', '~> 4.4'
 pod 'SwiftyJSON'
+pod 'SDWebImage'
 
 end
