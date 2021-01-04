@@ -2,7 +2,10 @@
 align="right"/>
 # Flower Classification
 
-An app showing what is the name of the flower depicted on the image using camera or photo library. 
+This is a Machine Learning practice app allows to demonstrate the usage of Flower Classification model. 
+It is an app showing what is a type of a flower depicted on an image using 
+ - camera
+ - photo library
 
 ## Steps to use the app
 
