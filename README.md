@@ -21,7 +21,10 @@ or
 * Selecting an image with an imagepicker
 * Matching the result from CoreML model with the info from the Wikipedia and showing it on the title and providing a text description.
 
-<img src="https://github.com/elina-mns/Chat-App/blob/main/Chat%20App/Assets.xcassets/1.imageset/Optimized-Log%20in.png"
+<img src="https://github.com/elina-mns/Flower-Classification/blob/main/Flower%20Classification/Assets.xcassets/1.png"
 width=300, height=600,
 align="left"/>
 
+<img src="https://github.com/elina-mns/Flower-Classification/blob/main/Flower%20Classification/Assets.xcassets/2.png"
+width=300, height=600,
+align="center"/>
