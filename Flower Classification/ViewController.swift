@@ -17,7 +17,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
     
     let baseURL = "https://en.wikipedia.org/w/api.php"
     
-    @IBOutlet weak var textLabelfromWiki: UILabel!
+    @IBOutlet weak var textLabelfromWiki: UITextView!
     
     let imagePicker = UIImagePickerController()
     
@@ -79,6 +79,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
                 let pageId = flowerJSON["query"]["pageids"][0].stringValue
                 let flowerDescription = flowerJSON["query"]["pages"][pageId]["extract"].stringValue
                 self.textLabelfromWiki.text = flowerDescription
+//                if self.textLabelfromWiki.text?.count != 0 {
+//                    let range = NSMakeRange(self.textLabelfromWiki.text!.count - 1, 0)
+//                    self.textLabelfromWiki.scrollRangeToVisible(range)
+//                }
             }
         }
     }
