@@ -26,6 +26,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
         super.viewDidLoad()
         imagePicker.delegate = self
         imagePicker.allowsEditing = true
+        imageView.image = UIImage(named: "172")
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
