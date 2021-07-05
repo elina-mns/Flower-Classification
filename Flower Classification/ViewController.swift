@@ -34,7 +34,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
             guard let ciImage = CIImage(image: pickedImage) else {
                 fatalError("Couldn't convert to CIImage")
             }
-           
+
             detect(flowerImage: ciImage)
         }
         
