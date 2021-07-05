@@ -1,5 +1,5 @@
 <img src="https://github.com/elina-mns/Flower-Classification/blob/main/Flower%20Classification/readMe%20files/172.jpg"
-width=100, height=100,
+width=250, height=200,
 align="right"/>
 # Flower Classification
 
