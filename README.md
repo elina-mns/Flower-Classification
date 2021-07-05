@@ -1,4 +1,4 @@
-<img src="https://github.com/elina-mns/Flower-Classification/blob/main/Flower%20Classification/Assets.xcassets/AppIcon.appiconset/180.png"
+<img src="https://github.com/elina-mns/Flower-Classification/blob/main/Flower%20Classification/readMe%20files/172.jpg"
 align="right"/>
 # Flower Classification
 
@@ -24,10 +24,10 @@ or
 * Selecting an image with an imagepicker
 * Matching the result from CoreML model with the info from the Wikipedia and showing it on the title and providing a text description.
 
-<img src="https://github.com/elina-mns/Flower-Classification/blob/main/Flower%20Classification/Assets.xcassets/1.png"
+<img src="https://github.com/elina-mns/Flower-Classification/blob/main/Flower%20Classification/readMe%20files/1.jpg"
 width=300, height=600,
 align="left"/>
 
-<img src="https://github.com/elina-mns/Flower-Classification/blob/main/Flower%20Classification/Assets.xcassets/2.png"
+<img src="https://github.com/elina-mns/Flower-Classification/blob/main/Flower%20Classification/readMe%20files/2.jpg"
 width=300, height=600,
 align="center"/>
